@@ -1,23 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import productApi from './api/productApi';
+import React, { useEffect, useState } from 'react';
+import { Route, Switch } from 'react-router';
+import CounterFeature from './features/Counter';
+import Header from 'components/Header';
+import ProductFeature from 'features/Product';
+
 
 function App() {
+  // useEffect(() => {
+  //   const fetchProducts = async () => {
+  //     const productList = await productApi.getAll();
+  //     console.log(productList);
+  //   }
+
+  //   fetchProducts();
+  // }, [])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Header />
+      <Switch>
+        <Route path="/" component={CounterFeature} exact /> 
+        <Route path="/products" component={ProductFeature} /> 
+
+      </Switch>
     </div>
   );
 }
